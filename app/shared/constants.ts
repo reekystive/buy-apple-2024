@@ -1,6 +1,45 @@
 import { mapValues as _mapValues } from 'lodash'
 import { IPHONEORDER_CONFIG } from './interface'
 export const iPhoneModels = {
+    iPhone16Pro: [
+        { color: { value: 'black', text: '黑色钛金属' }, capacity: '128GB', model: 'MYLN3CH/A' },
+        { color: { value: 'black', text: '黑色钛金属' }, capacity: '256GB', model: 'MYLT3CH/A' },
+        { color: { value: 'black', text: '黑色钛金属' }, capacity: '512GB', model: 'MYLX3CH/A' },
+        { color: { value: 'black', text: '黑色钛金属' }, capacity: '1TB', model: 'MYM53CH/A' },
+
+        { color: { value: 'white', text: '白色钛金属' }, capacity: '128GB', model: 'MYLP3CH/A' },
+        { color: { value: 'white', text: '白色钛金属' }, capacity: '256GB', model: 'MYLU3CH/A' },
+        { color: { value: 'white', text: '白色钛金属' }, capacity: '512GB', model: 'MYLY3CH/A' },
+        { color: { value: 'white', text: '白色钛金属' }, capacity: '1TB', model: 'MYM63CH/A' },
+
+        { color: { value: 'desert', text: '沙漠色钛金属' }, capacity: '128GB', model: 'MYLQ3CH/A' },
+        { color: { value: 'desert', text: '沙漠色钛金属' }, capacity: '256GB', model: 'MYLV3CH/A' },
+        { color: { value: 'desert', text: '沙漠色钛金属' }, capacity: '512GB', model: 'MYM23CH/A' },
+        { color: { value: 'desert', text: '沙漠色钛金属' }, capacity: '1TB', model: 'MYM73CH/A' },
+
+        { color: { value: 'primary', text: '原色钛金属' }, capacity: '128GB', model: 'MYLR3CH/A' },
+        { color: { value: 'primary', text: '原色钛金属' }, capacity: '256GB', model: 'MYLW3CH/A' },
+        { color: { value: 'primary', text: '原色钛金属' }, capacity: '512GB', model: 'MYM43CH/A' },
+        { color: { value: 'primary', text: '原色钛金属' }, capacity: '1TB', model: 'MYM83CH/A' },
+    ],
+    iPhone16ProMax: [
+        { color: { value: 'black', text: '黑色钛金属' }, capacity: '256GB', model: 'MYTM3CH/A' },
+        { color: { value: 'black', text: '黑色钛金属' }, capacity: '512GB', model: 'MYTR3CH/A' },
+        { color: { value: 'black', text: '黑色钛金属' }, capacity: '1TB', model: 'MYTY3CH/A' },
+
+        { color: { value: 'white', text: '白色钛金属' }, capacity: '256GB', model: 'MYTN3CH/A' },
+        { color: { value: 'white', text: '白色钛金属' }, capacity: '512GB', model: 'MYTT3CH/A' },
+        { color: { value: 'white', text: '白色钛金属' }, capacity: '1TB', model: 'MYW03CH/A' },
+
+        { color: { value: 'desert', text: '沙漠色钛金属' }, capacity: '256GB', model: 'MYTP3CH/A' },
+        { color: { value: 'desert', text: '沙漠色钛金属' }, capacity: '512GB', model: 'MYTW3CH/A' },
+        { color: { value: 'desert', text: '沙漠色钛金属' }, capacity: '1TB', model: 'MYW13CH/A' },
+
+        { color: { value: 'primary', text: '原色钛金属' }, capacity: '256GB', model: 'MYTQ3CH/A' },
+        { color: { value: 'primary', text: '原色钛金属' }, capacity: '512GB', model: 'MYTX3CH/A' },
+        { color: { value: 'primary', text: '原色钛金属' }, capacity: '1TB', model: 'MYW23CH/A' },
+    ],
+
     iPhone15Pro: [
         { color: { value: 'black', text: '黑色钛金属' }, capacity: '128GB', model: 'MTQ43CH/A' },
         { color: { value: 'black', text: '黑色钛金属' }, capacity: '256GB', model: 'MTQ83CH/A' },
