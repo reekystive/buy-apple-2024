@@ -1,5 +1,5 @@
 {
-  "name": "iPhoneOrder.2023",
+  "name": "buy-apple-2024",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -75,5 +75,6 @@
     "ts-loader": "^9.5.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
-  }
+  },
+  "packageManager": "pnpm@9.9.0"
 }
