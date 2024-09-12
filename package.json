@@ -9,7 +9,7 @@
     "lint": "next lint",
     "bunbuild": "bun ./bunBuild.ts",
     "afterbuild": "node ./buildAfter.js",
-    "zip:extension": "rm -rf iPhoneOrder.zip && cd ./extension && zip -r ../iPhoneOrder.zip . && cd ..",
+    "zip:extension": "rm -rf buy-apple.zip && cd ./extension && zip -r ../buy-apple.zip . && cd ..",
     "build:extension:after": "bun run build && bun run afterbuild",
     "bun:extension": "bun clear:terminal && cross-env-shell BUILD_TYPE=extension bun run build:extension:after && bun run bunbuild && bun zip:extension",
     "pack:extensionscript": "webpack --config ./extension.webpack.config.js",

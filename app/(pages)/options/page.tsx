@@ -42,10 +42,10 @@ export default function Options() {
     const notiAPIRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
-        restoreFromStorage(storeKeys.orderConfig).then(data => {
+        restoreFromStorage(storeKeys.orderConfig).then((data) => {
             if (data) {
                 console.log(`restoreFromStorage`, data)
-                setConfig(config => {
+                setConfig((config) => {
                     return {
                         ...config,
                         ...(data as IPHONEORDER_CONFIG),
@@ -65,7 +65,7 @@ export default function Options() {
         let _index = -1
         const { lang, voiceName } = config?.voiceInfo || {}
         if (lang && voiceName && voiceList.length) {
-            _index = _findIndex(voiceList, v => {
+            _index = _findIndex(voiceList, (v) => {
                 return v.lang == lang && v.voiceName == voiceName
             })
         }
@@ -76,7 +76,7 @@ export default function Options() {
     const billSelected = useMemo(() => {
         return (
             (config?.payBill &&
-                _findIndex(billItemList, _b => {
+                _findIndex(billItemList, (_b) => {
                     return _b.id == config.payBill
                 })) ||
             0
@@ -87,7 +87,7 @@ export default function Options() {
     const payinstallmentSelected = useMemo(() => {
         return (
             (config?.payInstallment &&
-                _findIndex(payinstallmentList, _b => {
+                _findIndex(payinstallmentList, (_b) => {
                     return _b.id == String(config.payInstallment)
                 })) ||
             0
@@ -97,7 +97,7 @@ export default function Options() {
     // ************ 👇下拉菜单联动👇 ************
     useEffect(() => {
         const newPayinstallmentList = _map(
-            _filter(defaultPayinstallmentTotal, item => {
+            _filter(defaultPayinstallmentTotal, (item) => {
                 if (item.id == 0) return true
                 if (item?.includes && Number(item?.includes?.length) > 0) {
                     return item.includes.includes(config.payBill)
@@ -109,13 +109,13 @@ export default function Options() {
                     id: _item.id,
                     name: _item.name,
                 }
-            }
+            },
         )
 
         setpayinstallmentList(newPayinstallmentList)
         // 当原来的分期笔数不存在时
         if (
-            !_find(newPayinstallmentList, _t => {
+            !_find(newPayinstallmentList, (_t) => {
                 return _t.id == config.payInstallment
             })
         ) {
@@ -128,7 +128,7 @@ export default function Options() {
 
     useEffect(() => {
         if (config.provinceName) {
-            let provinceIndex: number = _findIndex(province, item => {
+            let provinceIndex: number = _findIndex(province, (item) => {
                 return item.name == config.provinceName
             })
             provinceIndex = provinceIndex > -1 ? provinceIndex : 0
@@ -139,7 +139,7 @@ export default function Options() {
             const newCityList = city[provinceId]
             setCityList(newCityList)
             if (
-                !_find(newCityList, _t => {
+                !_find(newCityList, (_t) => {
                     return _t.name == config.cityName
                 })
             ) {
@@ -156,7 +156,7 @@ export default function Options() {
 
     useEffect(() => {
         if (config.cityName) {
-            let cityIndex: number = _findIndex(cityList, item => {
+            let cityIndex: number = _findIndex(cityList, (item) => {
                 return item.name == config.cityName
             })
             cityIndex = cityIndex > -1 ? cityIndex : 0
@@ -169,7 +169,7 @@ export default function Options() {
             if (newDistrictList) {
                 setDistrictList(newDistrictList)
                 if (
-                    !_find(newDistrictList, _t => {
+                    !_find(newDistrictList, (_t) => {
                         return _t.name == config.districtName
                     })
                 ) {
@@ -184,7 +184,7 @@ export default function Options() {
 
     useEffect(() => {
         // setSelectedDistrictIndex
-        let districtIndex: number = _findIndex(districtList, item => {
+        let districtIndex: number = _findIndex(districtList, (item) => {
             return item.name == config.districtName
         })
         districtIndex = districtIndex > -1 ? districtIndex : 0
@@ -194,7 +194,7 @@ export default function Options() {
 
     // ************ 支付方式 ************
     const handleSelectPayType = (payItem: Record<string, any>) => {
-        setConfig(prev => {
+        setConfig((prev) => {
             return {
                 ...prev,
                 payBill: payItem.id,
@@ -204,7 +204,7 @@ export default function Options() {
 
     // ************ 分期笔数 ************
     const handleSelectPayinstallment = (payinstallmentItem: Record<string, any>) => {
-        setConfig(prev => {
+        setConfig((prev) => {
             return {
                 ...prev,
                 payInstallment: payinstallmentItem.id,
@@ -214,7 +214,7 @@ export default function Options() {
 
     // ************ 选中省份 ************
     const handleSelectProvince = (provinceItem: Record<string, any>) => {
-        setConfig(prev => {
+        setConfig((prev) => {
             return {
                 ...prev,
                 provinceName: provinceItem.name,
@@ -223,7 +223,7 @@ export default function Options() {
     }
     // ************ 选中城市 ************
     const handleSelectCity = (cityItem: Record<string, any>) => {
-        setConfig(prev => {
+        setConfig((prev) => {
             return {
                 ...prev,
                 cityName: cityItem.name,
@@ -233,7 +233,7 @@ export default function Options() {
 
     // ************ 选中区域 ************
     const handleSelectDistrict = (districtItem: Record<string, any>) => {
-        setConfig(prev => {
+        setConfig((prev) => {
             return {
                 ...prev,
                 districtName: districtItem.name,
@@ -242,7 +242,7 @@ export default function Options() {
     }
 
     const handleSelectVoice = (voiceItem: Record<string, any>) => {
-        setConfig(prev => {
+        setConfig((prev) => {
             return {
                 ...prev,
                 voiceInfo: {
@@ -304,7 +304,7 @@ export default function Options() {
             <div className="space-y-12">
                 <div className="border-b border-gray-900/10 pb-12">
                     <h2 className="text-base font-semibold leading-7 text-gray-900">配置信息</h2>
-                    <p className="mt-1 text-sm leading-6 text-gray-600">以下信息用于抢购iPhone时自动填入</p>
+                    <p className="mt-1 text-sm leading-6 text-gray-600">以下信息用于抢购 iPhone 时自动填入</p>
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div className="sm:col-span-3">
                             <label htmlFor="last-name" className={labelClass}>
@@ -694,7 +694,7 @@ const getVoices = async (): Promise<VoiceType[]> => {
                 // @ts-ignore
                 function (voices) {
                     voiceList = []
-                    _map(voices, v => {
+                    _map(voices, (v) => {
                         const { lang, voiceName } = v || {}
                         const prefixlang = lang && lang.toLowerCase()
                         if (validateVoices.includes(prefixlang)) {
@@ -711,7 +711,7 @@ const getVoices = async (): Promise<VoiceType[]> => {
                         return x
                     })
                     resolve(voiceList)
-                }
+                },
             )
         })
     }

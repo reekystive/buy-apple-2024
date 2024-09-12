@@ -1,10 +1,10 @@
 {
     "manifest_version": 3,
-    "name": "iPhoneOrder.2023",
-    "description": "iPhoneOrder",
+    "name": "Buy Apple 2024",
+    "description": "Buy your favorite iPhone 16 models",
     "version": "1.0",
-    "permissions": ["ttsEngine","tts", "activeTab", "scripting", "contextMenus", "tabs","storage"],
-    "host_permissions": [ "https://*.apple.com.cn/*"],
+    "permissions": ["ttsEngine", "tts", "activeTab", "scripting", "contextMenus", "tabs", "storage"],
+    "host_permissions": ["https://*.apple.com.cn/*"],
     "icons": {
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",
@@ -15,7 +15,7 @@
     },
     "options_page": "dist/options.html",
     "action": {
-        "default_title": "iPhoneOrder",
+        "default_title": "Buy Apple 2024",
         "default_popup": "dist/popup.html"
     },
     "background": {
@@ -23,16 +23,14 @@
     },
     "web_accessible_resources": [
         {
-          "resources": ["inject-script.js", "dist/tips.html", "icons/icon38.png"],
-          "matches": ["https://*.apple.com.cn/*"]
+            "resources": ["inject-script.js", "dist/tips.html", "icons/icon38.png"],
+            "matches": ["https://*.apple.com.cn/*"]
         }
     ],
     "content_scripts": [
         {
-          "js": ["content-script.js"],
-          "matches": [
-            "https://*.apple.com.cn/*"
-          ]
+            "js": ["content-script.js"],
+            "matches": ["https://*.apple.com.cn/*"]
         }
     ]
 }
