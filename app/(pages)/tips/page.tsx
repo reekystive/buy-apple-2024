@@ -24,11 +24,14 @@ const Tips = () => {
                     <div className="flex flex-row gap-0 h-8 items-center justify-center py-2 ">
                         <div className="  ">
                             当前正在重试：
-                            <span className=" text-indigo-700">{fetchCount > 9 ? fetchCount : '0' + fetchCount}</span>次
+                            <span className=" text-indigo-700">
+                                {fetchCount > 9 ? fetchCount : '0' + fetchCount}
+                            </span>{' '}
+                            次
                         </div>
                     </div>
                     <div className="flex flex-row h-8">
-                        <span className="text-indigo-700">{beforeReload}</span>次之后将刷新页面
+                        <span className="text-indigo-700">{beforeReload}</span> 次之后将刷新页面
                     </div>
                 </>
             ) : (
