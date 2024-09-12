@@ -27,7 +27,7 @@ const Popup = () => {
             console.log(`please open in chrome`)
         }
     }
-    const handleConfirm = () => {
+    const handleConfirm = async (orderEnabled: boolean) => {
         if (
             !orderEnabled ||
             (config?.lastName &&
@@ -39,7 +39,7 @@ const Popup = () => {
                 config?.districtName &&
                 config?.provinceName)
         ) {
-            confirmAsync(orderEnabled)
+            await saveToStorage(orderEnabled, storeKeys.orderEnabled)
         } else {
             setOrderEnable(false)
             alert(`请先配置必要信息`)
@@ -80,22 +80,17 @@ const Popup = () => {
                         index={0}
                         callback={({ enabled }) => {
                             setOrderEnable(enabled)
+                            handleConfirm(enabled)
                         }}
                     />
                 </div>
             </main>
             <div className="w-full flex flex-row justify-center text-center items-center gap-5 text-sm">
                 <div
-                    className={`flex w-1/3 h-9 bg-white text-indigo-500 cursor-pointer bg-opacity-90 border-4 border-t-2 border-indigo-500 rounded-3xl my-2 items-center align-middle justify-center text-center min-w-min px-3 hover:shadow-md hover:border-t-[3px] hover:border-b-[3px]`}
+                    className={`flex w-2/3 h-9 bg-white text-indigo-500 cursor-pointer bg-opacity-90 border-4 border-t-2 border-indigo-500 rounded-3xl my-2 items-center align-middle justify-center text-center min-w-min px-3 hover:shadow-md hover:border-t-[3px] hover:border-b-[3px]`}
                     onClick={handleOptionClick}
                 >
-                    配置
-                </div>
-                <div
-                    className={`flex w-1/3 h-9 ${'bg-indigo-600 cursor-pointer'} bg-opacity-90 border border-indigo-500 rounded-3xl my-2 items-center align-middle justify-center text-center min-w-min px-3 hover:shadow-md hover:bg-indigo-500`}
-                    onClick={handleConfirm}
-                >
-                    确认
+                    填写下单配置
                 </div>
             </div>
         </div>
@@ -158,9 +153,4 @@ const confirmLoad = async ({ callback }: ICondirmLoadProps) => {
         chrome.tabs.reload(tab.id)
         return
     }
-}
-
-const confirmAsync = async (orderEnabled: boolean) => {
-    await saveToStorage(orderEnabled, storeKeys.orderEnabled)
-    window.close()
 }
